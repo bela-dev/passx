@@ -1,0 +1,104 @@
+  /** Glory **/
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-Thin.ttf');
+    font-weight: thin;
+    font-weight: 100;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-ThinItalic.ttf');
+    font-weight: thin;
+    font-weight: 100;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-ExtraLight.ttf');
+    font-weight: 200;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-ExtraLightItalic.ttf');
+    font-weight: 200;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-Light.ttf');
+    font-weight: 300;
+    font-weight: light;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-LightItalic.ttf');
+    font-weight: 300;
+    font-weight: light;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-Regular.ttf');
+    font-weight: 400;
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-Medium.ttf');
+    font-weight: 500;
+    font-weight: medium;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-MediumItalic.ttf');
+    font-weight: 500;
+    font-weight: medium;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-SemiBold.ttf');
+    font-weight: 600;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-SemiBoldItalic.ttf');
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-Bold.ttf');
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-BoldItalic.ttf');
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-ExtraBold.ttf');
+    font-weight: 800;
+  }
+
+  @font-face {
+    font-family: 'Glory';
+    src: url('../assets/fonts/glory/Glory-ExtraBoldItalic.ttf');
+    font-weight: 800;
+    font-style: italic;
+  }

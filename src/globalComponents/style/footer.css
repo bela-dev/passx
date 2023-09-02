@@ -1,0 +1,66 @@
+footer {
+    width: calc(100vw - 40px);
+    position: absolute;
+    height: 35px;
+    background-color: rgba(10, 10, 10, .8);
+    bottom: 0;
+    padding-inline: 20px;
+}
+
+footer .links {
+    float: right;
+    line-height: 35px;
+    color: var(--white);
+    font-size: 16px;
+}
+
+footer .links span {
+    margin-inline: 10px;
+    opacity: .3;
+}
+
+footer .links a {
+    cursor: pointer;
+    transition: margin .2s;
+    color: var(--white);
+    text-decoration: none;
+    transition: opacity .1s;
+}
+
+footer .links a.disabled {
+    opacity: .6;
+}
+
+footer .links a.disabled:hover {
+    opacity: .63;
+}
+
+footer .links a:hover {
+    opacity: .93;
+}
+
+footer .links a:hover {
+    transform: scale(1.1);
+}
+
+footer .cuodex {
+    float: left;
+}
+
+footer .cuodex span {
+    line-height: 35px;
+    color: var(--white);
+}
+
+footer .cuodex svg {
+    height: 18px;
+    margin-block: 8.5px;
+    float: left;
+    width: 35px;
+    transition: transform .3s;
+    cursor: pointer;
+}
+
+footer .cuodex:hover svg {
+    transform: rotate(90deg);
+}

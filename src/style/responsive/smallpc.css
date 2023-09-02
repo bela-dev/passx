@@ -1,0 +1,13 @@
+@media (max-width: 1400px), (max-height: 830px) {
+    .wrapper div.box-wrapper:not(.login-wrapper):not(.login-flip) {
+        --width: 1150px;
+        --height: 650px;
+    }
+
+    .popup {
+        --padding-block: 30px;
+        --width: calc(300px + 2*var(--padding));
+        --height: calc(580px + 2*var(--padding-block));
+        top: calc(50vh - var(--height) / 2);
+    }
+}

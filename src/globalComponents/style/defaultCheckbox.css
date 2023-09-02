@@ -1,0 +1,42 @@
+.default-checkbox {
+    width: 80%;
+    margin-inline: 10%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.default-checkbox .checkbox {
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid var(--main-color);
+}
+
+.default-checkbox .checkbox.checked::before {
+    background-color: var(--main-color);
+    content: "";
+    width: 7px;
+    height: 7px;
+    position: absolute;
+    border-radius: 3px;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.default-checkbox input {
+    float: left;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.default-checkbox input:after {
+    background-color: var(--main-color);
+}
+
+.default-checkbox label {
+    margin-left: 10px;
+}

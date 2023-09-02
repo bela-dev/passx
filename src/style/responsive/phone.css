@@ -1,0 +1,12 @@
+@media (max-width: 680px) {
+    .dashboard header .user h4 {
+        display: none;
+    }
+    .dashboard header .filter {
+        width: 200px;
+    }
+    .box-wrapper {
+        --padding: 40px;
+        --padding-block: 30px;
+    }
+}

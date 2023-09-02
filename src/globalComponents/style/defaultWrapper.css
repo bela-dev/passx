@@ -1,0 +1,27 @@
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-size: cover;
+    overflow: hidden;
+    
+}
+
+.wrapper-children {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: margin .5s ease;
+}
+
+.wrapper p.medium {
+    letter-spacing: .7px;
+    line-height: 25px;
+    margin-bottom: 25px;
+    font-size: 20px;
+}

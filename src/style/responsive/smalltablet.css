@@ -1,0 +1,5 @@
+@media (max-width: 1050px) {
+    .dashboard header .filter {
+        width: 500px;
+    }
+}

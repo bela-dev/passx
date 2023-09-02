@@ -1,0 +1,11 @@
+@media (max-width: 1200px), (max-height: 800px) {
+    .wrapper div.box-wrapper {
+        --width: 100vw !important;
+        --height: 100vh !important;
+        border-radius: 0;
+    }
+    /** Disable Swipe animation **/
+    .animation-wrapper {
+        --swipe-amount: 0;
+    }
+}

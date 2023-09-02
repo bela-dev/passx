@@ -1,0 +1,145 @@
+.dashboard {
+    --header-height: 80px;
+}
+
+.dashboard .add {
+    float: left;
+    cursor: pointer;
+    background-color: var(--main-color);
+    fill: var(--white);
+    padding: 0;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+    margin-left: 15px;
+    transition: background .2s;
+}
+
+.dashboard .add:hover {
+    background-color: var(--main-color-darker);
+}
+
+.dashboard input, .dashboard textarea, .dashboard .default-dropdown {
+    border: 2.5px solid var(--lighter-grey);
+    height: 40px;
+    border-radius: 15px;
+    padding-left: 15px;
+    outline: none;
+    transition: border .3s;
+}
+
+.dashboard input:focus, .dashboard textarea:focus {
+    border-color: var(--main-color);
+}
+
+.dashboard header {
+    border-bottom: 2px solid var(--lighter-grey);
+    height: var(--header-height);
+    width: 100%;
+}
+
+.dashboard header .filter {
+    
+    width: 700px;
+    margin-top: 10px;
+    float: left;
+    margin-left: 20px;
+}
+
+
+.dashboard header .user-dropdown {
+    float: right;
+    height: 44px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.dashboard header .user-dropdown .dropdown {
+    background-color: var(--white);
+    margin-top: 50px;
+    width: 135px;
+    padding: 30px;
+    box-shadow: 1px 1px 20px rgba(50, 50, 50, .2);
+    right: 40px;
+    border-radius: 15px;
+    position: absolute;
+    z-index: 2;
+    padding-block: 12px;
+    transform: scale(0);
+    transition: transform .35s ease, margin .35s ease;
+}
+
+.dashboard header .user-dropdown.open .dropdown {
+    transform: scale(1);
+    margin-top: 250px;
+}
+
+.dashboard header .user-dropdown .dropdown ul {
+    
+    list-style: none;
+    z-index: 5;
+    
+}
+
+.dashboard header .user-dropdown .dropdown ul li {
+    font-size: 17px;
+    margin-block: 18px;
+    color: var(--mid-grey);
+    cursor: pointer;
+    transition: margin .2s;
+}
+
+.dashboard header .user-dropdown .dropdown ul li:hover {
+    margin-left: 2px;
+}
+
+.dashboard header .user-dropdown .user:hover .dropdown-btn {
+    margin-top: -4px;
+}
+
+.dashboard header .user-dropdown.open .user .dropdown-btn {
+    margin-left: 17px;
+}
+
+.dashboard header .user-dropdown .user h4 {
+    font-weight: 400;
+    font-size: 26px;
+    float: left;
+    line-height: 44px;  
+    letter-spacing: .7px; 
+}
+
+.dashboard header .user-dropdown .user {
+    cursor: pointer;
+}
+
+.dashboard header .user-dropdown .user .dropdown-btn {
+    margin-left: 20px;
+    float: right;
+    height: 44px;
+    display: flex;
+    transition: margin .25s;
+    align-items: center;
+}
+
+.dashboard header .user-dropdown .user .dropdown-btn svg {
+    height: 14px;
+    transform: rotate(180deg);
+}
+
+.dashboard header .user-dropdown.open .user .dropdown-btn svg {
+    transform: rotate(0);
+}
+
+.dashboard .entry-count {
+    margin-left: -85px;
+    color: var(--mid-grey);
+    opacity: .4;
+    position: absolute;
+    top: 62.5px;
+}

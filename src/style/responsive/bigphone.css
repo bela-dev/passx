@@ -1,0 +1,11 @@
+@media (max-width: 900px) {
+    .dashboard header .filter {
+        width: 300px;
+    }
+    .dashboard .table-wrapper th {
+        display: none;
+    }
+    .dashboard .table-wrapper th:first-child {
+        display: block;
+    }
+}

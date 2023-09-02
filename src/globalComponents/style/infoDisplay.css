@@ -1,0 +1,28 @@
+.info-display {
+    position: absolute;
+    z-index: 3;
+    background-color: var(--white);
+    bottom: 15px;
+    left: -400px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 20px var(--mid-grey);
+    width: 270px;
+    height: 90px;
+    text-align: left;
+    transition: left .4s ease;
+}
+
+.info-display.open {
+    left: 15px;
+}
+
+.info-display h3 {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.info-display p {
+    font-size: 18px;
+    margin-top: 10px;
+}

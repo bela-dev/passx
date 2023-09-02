@@ -1,0 +1,21 @@
+.animation-wrapper {
+    transition: margin .4s ease;
+    margin: 0;
+    --swipe-amount: 100vw;
+}
+
+.animation-wrapper.left {
+    --inline: 1;
+}
+
+.animation-wrapper.right {
+    --inline: -1;
+}
+
+.animation-wrapper.swipe-out {
+    margin-left: calc(var(--inline) * -1 * var(--swipe-amount));
+}
+
+.animation-wrapper.swipe-in {
+    margin-left: calc(var(--inline) * var(--swipe-amount));
+}

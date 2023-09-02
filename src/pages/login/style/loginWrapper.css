@@ -1,0 +1,111 @@
+div.login-wrapper {
+
+    --width: 440px;
+    --height: 640px;
+
+    width: var(--width);
+    height: var(--height);
+
+    
+    transition: transform .3s;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.login-flip {
+    position: relative;
+    transition: transform .2s;
+    transform-style: preserve-3d;
+    padding: var(--padding);
+    width: var(--width);
+    height: var(--height);
+  }
+
+.login-wrapper.animationin {
+    transition-property: ease-out;
+}
+
+.login-wrapper.animationout {
+    transition-property: ease-in;
+}
+
+.login-wrapper.animationin .login-flip {
+    transform: rotateY(-90deg);
+}
+
+.login-wrapper.animationout .login-flip {
+    transform: rotateY(90deg);
+}
+
+.login-wrapper h1 {
+    text-align: center;
+    color: var(--mid-grey);
+    font-size: 40px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    line-height: 50px;
+}
+
+.login-wrapper .label {
+    margin-top: 27px;
+    margin-left: 2px;
+    margin-bottom: 5px;
+    color: var(--mid-grey);
+}
+
+.login-wrapper .default-input-icon {
+    float: right;
+    margin-top: -30px;
+    margin-right: 5px;
+}
+
+.login-wrapper .icon.invisible {
+    margin-right: 3.5px;
+}
+
+.login-wrapper input {
+    width: 100%;
+    color: rgb(60, 50, 60);
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border: 0px;
+    border-bottom-color: currentcolor;
+    border-bottom-style: none;
+    border-bottom-width: 0px;
+    border-bottom: 2px solid gray;
+    transition: .3s;
+    outline: none;
+}
+
+.login-wrapper input:focus {
+    padding-left: 5px;
+    width: calc(100% - 5px);
+    border-color: var(--main-color);
+}
+
+.login-wrapper .content {
+    margin-top: 80px;
+}
+
+.login-wrapper .error {
+    margin-top: -40px;
+    color: var(--red);
+    line-height: 14px;
+    position: absolute
+}
+
+.login-wrapper .error.success {
+    color: var(--green);
+}
+
+.login-wrapper .switch-btn {
+    float: right;
+    color: var(--mid-grey);
+    opacity: .6;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 16px;
+}

@@ -1,0 +1,53 @@
+.default-dropdown {
+    cursor: pointer;
+    overflow: hidden;
+    transition: border .3s, height .4s ease, margin .4s ease !important;
+    height: 40px;
+    margin-bottom: 132px !important;
+}
+
+.default-dropdown.active {
+    height: 160px;
+    margin-bottom: 12px !important;
+}
+
+.default-dropdown ul {
+    margin-top: 40px;
+    list-style: none;
+    height: 120px;
+    overflow-y: auto;
+}
+
+.default-dropdown ul li {
+    line-height: 38px;
+    transition: margin .2s;
+}
+
+.default-dropdown ul li:hover {
+    margin-left: 2px;
+}
+
+.default-dropdown h2, .default-dropdown ul li {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 38px;
+}
+
+.default-dropdown h2 {
+    float: left;
+}
+
+.default-dropdown .chevron {
+    opacity: .5;
+    float: right;
+    display: flex;
+    height: 38px;
+    align-items: center;
+    margin-right: 10px;
+    transform: rotate(180deg);
+}
+
+.default-dropdown.active .chevron {
+    opacity: .7;
+    transform: rotate(0);
+}

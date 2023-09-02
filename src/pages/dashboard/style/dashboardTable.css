@@ -1,0 +1,31 @@
+.dashboard .table-wrapper {
+    width: 100%;
+    height: calc(var(--height) - var(--header-height) - 2px - var(--padding-block));
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.dashboard .table-wrapper table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.dashboard .table-wrapper table tr {
+    height: 60px; 
+    border-radius: 45px;
+    transition: background .1s;
+}
+
+.dashboard .table-wrapper table tr:not(.title):hover {
+    background-color: rgba(100, 100, 100, .04);
+}
+
+.dashboard .table-wrapper table tr:not(.title) {
+    cursor: pointer;
+}
+
+.dashboard .table-wrapper table tr:not(.title) th {
+    font-weight: 500;
+}

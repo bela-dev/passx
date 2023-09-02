@@ -1,0 +1,115 @@
+.settings h1 {
+    text-align: center;
+    font-weight: 500;
+    line-height: 50px;
+}
+
+.settings-content {
+    display: flex;
+    height: calc(var(--height) - var(--padding)*2 - 30px);
+}
+
+.settings nav {
+    border-right: 2px solid var(--lighter-grey);
+    width: 20%;
+}
+
+.settings nav .element {
+    width: 100%;
+    height: 40px;
+    margin-block: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: margin .2s;
+}
+
+.settings nav .element.active::before {
+    height: 15px;
+}
+
+.settings nav .element::before {
+    content: "";
+    background-color: var(--main-color);
+    width: 3px;
+    height: 0;
+    margin-left: -13px;
+    position: absolute;
+}
+
+.settings nav .element:hover {
+    margin-left: 2px;
+}
+
+.settings nav .element svg {
+    float: left;
+    height: 15px;
+    opacity: .9;
+}
+
+.settings nav .element h3 {
+    font-weight: 500;
+    font-size: 25px;
+    letter-spacing: .7px;
+    margin-left: 15px;
+}
+
+.settings .content {
+    margin-inline: 40px;
+    margin-block: 20px;
+    width: 43%;
+    padding-inline: 5%;
+}
+
+.settings .content label {
+    float: left;
+    width: 100%;
+    font-size: 17px;
+}
+
+.settings p.info {
+    text-align: center;
+    font-size: 20px;
+}
+
+.settings .content input {
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.settings .content .default-input-icon.icon {
+    margin-top: -57px;
+    margin-right: 0;
+}
+
+.settings .content p {
+    margin-block: 10px;
+    margin-bottom: 20px;
+    height: 30px;
+}
+
+.settings .content a {
+    float: left;
+    text-decoration: underline;
+    color: var(--mid-grey);
+    width: 100%;
+    opacity: .7;
+    cursor: pointer;
+}
+
+.settings .delete p {
+    font-size: 20px;
+}
+
+.settings .delete p:not(.error) {
+    color: var(--red);
+    fill: var(--red);
+    margin-bottom: 40px;
+}
+
+.settings .delete p svg {
+    margin-left: -35px;
+    width: 35px;
+}

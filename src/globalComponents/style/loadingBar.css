@@ -1,0 +1,20 @@
+.loading-bar {
+    position: absolute;
+    height: 3px;
+    background-color: var(--main-color);
+    top: 0;
+    box-shadow: 1px 1px 5px rgba(50, 50, 50, .5);
+    transition: width .3s, opacity .5s;
+    z-index: 3;
+}
+
+.loading-bar.out {
+    animation: opacity-out 1s;
+    opacity: 0;
+}
+
+@keyframes opacity-out {
+    10% {opacity: 1}
+    50% {opacity: 1}
+    100% {opacity: 0}
+}

@@ -1,0 +1,30 @@
+.logout {
+    position: absolute;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.logout h1 {
+    color: white;
+    font-size: 70px;
+}
+
+.logout span {
+    margin-inline: 5px;
+    animation: jump .7s ease infinite;
+}
+
+.logout span:first-child {
+    animation-delay: .5s;
+}
+
+.logout span:last-child {
+    animation-delay: 1.3s;
+}
+
+@keyframes jump {
+    0% {margin-left: 5px; margin-right: 5px;}
+    30% {margin-left: 7px; margin-right: 3px;}
+    600% {margin-left: 5px; margin-right: 5px;}
+}

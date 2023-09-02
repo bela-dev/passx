@@ -1,0 +1,73 @@
+*, html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Glory", sans-serif;
+}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, .35);
+    z-index: 2;
+}
+
+.icon {
+    opacity: .3;
+    cursor: pointer;
+    transition: opacity .3s;
+}
+
+.icon:hover {
+    opacity: .4;
+}
+
+.icon svg {
+    height: 19px;
+}
+
+.box-wrapper, .popup {
+    --padding: 65px;
+    --padding-block: 40px;
+
+    position: absolute;
+    background-color: var(--white);
+    width: calc(var(--width) - var(--padding)*2);
+    height: calc(var(--height) - var(--padding-block)*2);
+    border-radius: 22px;
+    padding: var(--padding);
+    padding-block: var(--padding-block);
+    box-shadow: 1px 1px 20px var(--mid-grey);
+}
+
+.box-wrapper.fs-wrapper {
+    --width: 1350px;
+    --height: 750px;
+}
+
+.close-xmark {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    cursor: pointer;
+    transition: transform .1s;
+}
+
+.close-xmark:hover {
+    transform: scale(1.05);
+}
+
+.close-xmark svg {
+    height: 30px;
+    fill: var(--mid-grey);
+}
+
+p.success {
+    color: var(--green);
+}
+
+p.error {
+    color: var(--red);
+}

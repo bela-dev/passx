@@ -1,0 +1,34 @@
+.error-page {
+    display: flex;
+}
+
+.error-page svg {
+    fill: var(--white);
+    height: 200px;
+}
+
+.error-page .content {
+    color: var(--white);
+    margin-left: 30px;
+}
+
+.error-page .content h1 {
+    font-size: 50px;
+}
+
+.error-page .content p {
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.error-page .content a {
+    text-decoration: underline;
+    cursor: pointer;
+    transition: margin .3s;
+    color: var(--white);
+    line-height: 35px;
+}
+
+.error-page .content a:hover {
+    margin-left: 5px;
+}
