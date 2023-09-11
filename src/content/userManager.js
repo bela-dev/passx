@@ -8,6 +8,7 @@ import {clearEntries, getEntries} from "./entryManager"
 import { SERVER_SIDE_ENCRYPTION } from "./apiManager";
 import { getCookieSessionId, getCookieUsername, storeUser } from "./cookieManager";
 import { unstoreUser } from "./cookieManager";
+import { is2FAActivated } from "./2faManager";
 
 
 class User {
@@ -163,15 +164,16 @@ function login(username, password, callback) {
         if(data.status.includes("200")) {
             user = new User(username, "", password);
             user.setSessionId(data.data.sessionId);
-            getAccountInformation((d) => {
-                user.setEmail(d.data.user.email);
-                callback(data);
-            }, (e) => {
-                callback({
-                    status: "400 - Bad Request",
-                    message: "Something went wrong. Please try again later"
-                });
-            });
+            is2FAActivated((active) => {
+                data.twofa = active;
+                if(!active) {
+                    loadAccountInformation(() => {
+                        callback(data);
+                    });
+                }else {
+                    callback(data);
+                }
+            })
         }else {
             callback(data);
         }
@@ -181,12 +183,40 @@ function login(username, password, callback) {
     });
 }
 
+function loadAccountInformation(callback, data) {
+    getAccountInformation((d) => {
+        user.setEmail(d.data.user.email);
+        callback();
+    }, (e) => {
+        callback({
+            status: "400 - Bad Request",
+            message: "Something went wrong. Please try again later"
+        });
+    });
+}
+
 function getAccountInformation(callback, callbackError) {
     sendAuthRequest("account/information", "GET", {}, (data) => {
         callback(data);
     }, (error) => {
         callbackError(error);
     });
+}
+
+function confirmIdentity(otp, remember, onSuccess, onError) {
+    console.log("confirm");
+    sendAuthRequest("auth/confirm-identity", "POST", {
+        "otp": otp,
+        "rememberMe": remember
+    }, (data) => {
+        console.log(data);
+        if(data.status.includes("200")) {
+            onSuccess(data);
+        }else {
+            onError(data);
+        }
+    }, onError);
+
 }
 
 function updateUserPassword(password, newPassword, callback) {
@@ -247,4 +277,4 @@ function getPasswordTest(password) {
     return encryptEqualOutput("encryptionTest", password);
 }
 
-export {login, register, user, checkUser, updateUser, logout, getDummyUser, delUserInformation, updateUserPassword, deleteAccount, disableSessionCheck}
+export {login, register, user, checkUser, updateUser, logout, confirmIdentity, getDummyUser, delUserInformation, updateUserPassword, deleteAccount, disableSessionCheck}

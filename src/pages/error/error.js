@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import DefaultWrapper from "../../globalComponents/defaultWrapper";
 
 import SadSmiley from "../../assets/icons/sadSmiley";
+import HappySmiley from "../../assets/icons/happySmiley";
 
 import "./error.css";
 import { isCookieAllowed } from "../../content/cookieManager";
@@ -30,7 +31,15 @@ errorMsgs.set("666", {
 errorMsgs.set("601", {
     "title": "Session expired",
     "msg": "Your session is expired. Please login again."
-})
+});
+errorMsgs.set("701", {
+    "title": "Enabled 2FA",
+    "msg": "You successfully enabled two factor authentification"
+});
+errorMsgs.set("702", {
+    "title": "Disabled 2FA",
+    "msg": "You successfully disabled two factor authentification"
+});
 
 
 function ErrorPage() {
@@ -52,7 +61,7 @@ function ErrorPage() {
 
     return <DefaultWrapper>
         <div className="error-page">
-            <SadSmiley/>
+            {errorCode > 700 ? <HappySmiley/> : <SadSmiley/>}
             <div className="content">
                 <h1>{errorCode} {errorMsgs.get(errorCode).title}</h1>
                 <p>{errorMsgs.get(errorCode).msg}</p>

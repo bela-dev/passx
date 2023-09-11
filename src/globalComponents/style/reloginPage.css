@@ -46,6 +46,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: margin .3s ease;
+}
+
+.relogin .relogin-input .placeholder {
+    margin-left: 55px;
 }
 
 .relogin .relogin-input.phone input {
@@ -76,7 +81,7 @@
     font-size: 30px;
     padding: 0;
     text-align: center;
-    transition: all .1s;
+    transition: margin .1s;
     margin: 10px;
 }
 

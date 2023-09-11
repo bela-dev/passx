@@ -8,4 +8,21 @@
     .dashboard .table-wrapper th:first-child {
         display: block;
     }
+
+    .settings-content nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: white;
+        height: calc(100vh - 100px);
+        width: 200px;
+        padding-inline: 25px;
+        padding-block: 50px;
+        z-index: 1;
+    }
+
+    .settings-content .content {
+        width: 80%;
+        margin-block: 10%;
+    }
 }

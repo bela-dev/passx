@@ -10,7 +10,7 @@ function ReloginPhoneInput(props) {
             if(e.target.value.length >= props.passwordLength) {props.onFinish()}
         }, 10);
     }}></input>
-    <a onClick={props.onFinish}>Login</a>
+    <a onClick={props.onFinish}>{props.btn}</a>
     </>;
 }
 

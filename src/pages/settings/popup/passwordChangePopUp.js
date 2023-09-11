@@ -10,7 +10,6 @@ import { updateUserPassword } from "../../../content/userManager";
 var currentPassword, newPassword;
 
 function setCurrentPasswordPopUp(v) {
-    console.log("s");
     currentPassword = v;
 }
 

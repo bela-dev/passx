@@ -20,6 +20,7 @@ import "./style/responsive/smalltablet.css";
 import "./style/responsive/bigphone.css";
 import "./style/responsive/phone.css";
 import ChangeAPI from "./pages/changeapi/changeapi";
+import TWOFA from "./pages/2fa/2fa";
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
                   <Route path="logout" element={<Logout/>}/>
                   <Route path="register" element={<Register/>}/>
                   <Route path="cookies" element={<Cookies/>}/>
+                  <Route path="2fa" element={<TWOFA/>}/>
 
                   <Route path="dashboard" element={<Dashboard/>}/>
                   <Route path="dashboard/delete/:id" element={<Dashboard delete/>}/>

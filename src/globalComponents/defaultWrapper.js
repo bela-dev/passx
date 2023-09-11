@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import backgroundImage from "../assets/img/background.png";
 import AnimationWraper from "./animationWrapper";
@@ -8,6 +8,7 @@ import InfoDisplay from "./infoDisplay";
 import LoadingBar, { setLoadingBarState } from "./loadingBar";
 
 import "./style/defaultWrapper.css";
+import { is2FAActivated } from "../content/2faManager";
 
 function Background(props) {
 

@@ -18,8 +18,8 @@ import PasswordSettings from "./passwordSettings";
 import { swipeRight } from "../../globalComponents/animationWrapper";
 import PasswordChangePopUp from "./popup/passwordChangePopUp";
 import DeleteSettings from "./deleteSettings";
-import TwoFASettings from "./2faSettings";
 import DeletePopUp from "./popup/deletePopUp";
+import TwoFASettings from "./twoFaSettings";
 
 function Settings(props) {
 

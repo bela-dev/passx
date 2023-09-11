@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import "./style/contextMenu.css";
 
-import { genUUID } from "../../globalComponents/stringHelper";
+import { genUUID } from "../../globalComponents/utils";
 import { useNavigate } from "react-router-dom";
 
 const width = 200, height = 280;

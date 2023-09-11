@@ -1,4 +1,7 @@
 @media (max-width: 1200px), (max-height: 800px) {
+    .dashboard .table-wrapper {
+        height: calc(var(--height) - var(--header-height) - 2px - var(--padding-block) - 35px);
+    }
     .wrapper div.box-wrapper {
         --width: 100vw !important;
         --height: 100vh !important;

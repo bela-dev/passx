@@ -84,10 +84,15 @@
     margin-right: 0;
 }
 
+.settings .content img {
+    width: 340px;
+    margin-left: calc(50% - 170px);
+    cursor: pointer;
+}
+
 .settings .content p {
     margin-block: 10px;
     margin-bottom: 20px;
-    height: 30px;
 }
 
 .settings .content a {
@@ -112,4 +117,34 @@
 .settings .delete p svg {
     margin-left: -35px;
     width: 35px;
+}
+
+.settings .twofa .inputs input {
+    width: 60%;
+    margin-left: 10%;
+    height: 45px;
+    border: none;
+    border-radius: 0;
+    border-bottom: 2px solid var(--mid-grey);
+    outline: none;
+    background-color: transparent;
+    color: var(--mid-grey);
+    font-size: 22px;
+    padding: 0;
+    text-align: center;
+    transition: margin .1s;
+    float: left;
+    margin-block: 0;
+}
+
+.settings .twofa .inputs a {
+    float: left;
+    width: 20%;
+    line-height: 20px;
+    margin-top: 23px;
+    font-size: 20px;
+    color: var(--mid-grey);
+    margin-left: 10%;
+    opacity: 1;
+    letter-spacing: 1px;
 }

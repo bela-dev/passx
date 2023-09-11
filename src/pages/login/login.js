@@ -9,19 +9,34 @@ import { login } from "../../content/userManager";
 import { getParam, setParam } from "../../globalComponents/globalParams";
 import { loadEntries } from "../../content/entryManager";
 import { swipeLeft } from "../../globalComponents/animationWrapper";
+import { is2FAActivated } from "../../content/2faManager";
+
+function handleEntryLoading() {
+    loadEntries(() => {
+        if(isCookieAllowed()) {
+            swipeLeft("dashboard");
+        }else {
+            swipeLeft("cookies");
+        }
+    });
+}
+
+var alreadySent = false;
 
 function handleLogin(data, setError) {
     setParam("loginMessage", null);
-    setParam("loginError", null)
+    setParam("loginError", null);
+    console.log(data);
     if(data.status.includes("200")) {
-        loadEntries(() => {
-            if(isCookieAllowed()) {
-                swipeLeft("dashboard");
-            }else {
-                swipeLeft("cookies");
-
-            }
-        });
+        console.log("login suc");
+        if(alreadySent) return;
+        alreadySent = true;
+        if(data.twofa) {
+            swipeLeft("2fa");
+        }else {
+            handleEntryLoading();
+        }
+        
         
     }else {
         setError(data.message);
@@ -49,5 +64,5 @@ function Login(props) {
 
 }
 
-export {handleLogin};
+export {handleLogin, handleEntryLoading};
 export default Login;
