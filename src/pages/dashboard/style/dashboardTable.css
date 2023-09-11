@@ -14,6 +14,7 @@
 
 .dashboard .table-wrapper table tr {
     height: 60px; 
+    line-height: 60px;
     border-radius: 45px;
     transition: background .1s;
 }

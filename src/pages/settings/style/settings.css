@@ -148,3 +148,36 @@
     opacity: 1;
     letter-spacing: 1px;
 }
+
+.settings .burger {
+    width: 30px;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    cursor: pointer;
+    display: none;
+}
+
+.settings .burger .line {
+    width: 100%;
+    background-color: var(--mid-grey);
+    height: 2px;
+    margin-block: 7px;
+    transition: margin .3s ease;
+}
+
+.settings .burger:hover .line {
+    margin-block: 6px;
+}
+
+.settings nav .close {
+    position: absolute;
+    cursor: pointer;
+    right: 30px;
+    transition: right .2s;
+    display: none;
+}
+
+.settings nav .close:hover {
+    right: 32px;
+}

@@ -20,9 +20,7 @@ function Logout() {
     useEffect(() => {
         logout((data) => {
             setTimeout(() => {
-                setParam("loginMessage", logoutMessage);
-                swipeRight("login");
-                setParam("logoutMessage", undefined);
+                navigate("/error/703");
                 disableSessionCheck();
             }, 400);
         }, () => {

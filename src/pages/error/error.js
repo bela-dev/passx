@@ -40,7 +40,10 @@ errorMsgs.set("702", {
     "title": "Disabled 2FA",
     "msg": "You successfully disabled two factor authentification"
 });
-
+errorMsgs.set("703", {
+    "title": "Logged out",
+    "msg": "You successfully logged out"
+});
 
 function ErrorPage() {
 

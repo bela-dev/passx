@@ -19,7 +19,7 @@ function DashboardUserDropdown() {
             window.dispatchEvent(new CustomEvent("closeContextMenu", {}));
         }}>
             <h4>{user ? user.getName() : ""}</h4>
-            <div className="dropdown-btn"><ChevronIcon/></div>
+            <div className="dropdown-btn"><ChevronIcon down={!open} up={open}/></div>
         </div>
         <div className="dropdown">
             <ul>

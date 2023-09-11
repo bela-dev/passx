@@ -9,6 +9,16 @@
         display: block;
     }
 
+    /** Add Settings Mobile Nav **/
+
+    .settings-content .burger {
+        display: block;
+    }
+
+    .settings-content nav .close {
+        display: block;
+    }
+
     .settings-content nav {
         position: absolute;
         top: 0;
@@ -19,6 +29,12 @@
         padding-inline: 25px;
         padding-block: 50px;
         z-index: 1;
+        left: -250px;
+        transition: left .5s ease;
+    }
+
+    .settings-content nav.active {
+        left: 0;
     }
 
     .settings-content .content {

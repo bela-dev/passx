@@ -8,6 +8,7 @@ import UserIcon from "../../assets/icons/user";
 import TrashIcon from "../../assets/icons/trash";
 import LockIcon from "../../assets/icons/lock";
 import KeyIcon from "../../assets/icons/key";
+import ChevronIcon from "../../assets/icons/chevron";
 
 import "./style/settings.css";
 import ProfileSettings from "./profileSettings";
@@ -22,6 +23,8 @@ import DeletePopUp from "./popup/deletePopUp";
 import TwoFASettings from "./twoFaSettings";
 
 function Settings(props) {
+
+    const [mobileMenu, setMobileMenu] = useState(false);
 
     const { page } = useParams();
     const navigate = useNavigate();
@@ -63,7 +66,17 @@ function Settings(props) {
                         }}>
                         <XMarkIcon/>
                     </div>
-                    <nav>
+                    <div className="burger" onClick={() => {
+                        setMobileMenu(!mobileMenu);
+                    }}>
+                        <div className="line"/>
+                        <div className="line"/>
+                        <div className="line"/>
+                    </div>
+                    <nav className={mobileMenu ? "active" : ""}>
+                        <div className="close" onClick={() => {setMobileMenu(false);}}>
+                            <ChevronIcon left/>
+                        </div>
                         {settingsElements.map((e) => {
                             return <div onClick={() => navigate(e.getPath())} className={"element" + (e.compName(page) ? " active" : "")}>
                                 {e.getIcon()}
