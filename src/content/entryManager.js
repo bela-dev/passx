@@ -152,7 +152,7 @@ class PasswordEntry {
     getDescription() {return this.description;}
 
     toEncryptedJSON(key, title, username, password, email, description, url, id) {
-        var output = {}
+        var output = {};
         if(title) {
             output.title = encrypt(key, this.getTitle());
         }

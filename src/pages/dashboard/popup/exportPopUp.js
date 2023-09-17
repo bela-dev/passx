@@ -33,13 +33,11 @@ function ExportPopUp(props) {
     btnLeft={{
         title: "Export",
         onClick: () => {
-            setCurrentExportData(exportData(activeFormat));
+            exportData(activeFormat);
         }
     }}>
         <DefaultDropdown items={getOptions()} onChange={setActiveFormat}/>
         
-        <DefaultCheckbox checked onChange={setExpDescription}>include description</DefaultCheckbox>
-        <DefaultCheckbox checked onChange={setExpTitle}>include title</DefaultCheckbox>
     </PopUp>;
 
 }

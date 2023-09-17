@@ -1,0 +1,22 @@
+.generate-btn {
+    background-color: var(--mid-grey);
+    color: var(--white);
+    padding: 15px;
+    padding-block: 7px;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 7.5px;
+    margin-top: -24px;
+    margin-left: calc(10% - 13px);
+    display: none;
+    transition: opacity .4s ease;
+    opacity: 0;
+}
+
+.generate-btn.visible {
+    opacity: 1;
+}
+
+.generate-btn.active {
+    display: block;
+}

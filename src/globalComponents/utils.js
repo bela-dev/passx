@@ -11,4 +11,31 @@ function isNumberKey(evt) {
   return true;
 }
 
-export {genUUID, isNumberKey}
+const downloadFile = ({ data, fileName, fileType }) => {
+  // Create a blob with the data we want to download as a file
+  const blob = new Blob([data], { type: fileType })
+  // Create an anchor element and dispatch a click event on it
+  // to trigger a download
+  const a = document.createElement('a')
+  a.download = fileName
+  a.href = window.URL.createObjectURL(blob)
+  const clickEvt = new MouseEvent('click', {
+    view: window,
+    bubbles: true,
+    cancelable: true,
+  })
+  a.dispatchEvent(clickEvt)
+  a.remove()
+}
+
+function getCurrentDateAsString() {
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+  var yyyy = today.getFullYear();
+
+  today = mm + '/' + dd + '/' + yyyy;
+  return today;
+}
+
+export {genUUID, isNumberKey, downloadFile, getCurrentDateAsString}

@@ -1,3 +1,4 @@
+import { downloadFile, getCurrentDateAsString } from "../globalComponents/utils";
 import { decrypt, encrypt } from "./encryptionManager";
 import { getEncryptedJSON, getEntries, getUnencryptedJSON } from "./entryManager";
 import { user } from "./userManager";
@@ -6,8 +7,8 @@ import { user } from "./userManager";
 const options = new Map();
 
 
-options.set("Passx Backup (CSV)", 11);
-options.set("Passx Unencrypted (CSV)", 1);
+options.set("Passx Backup (JSON)", 11);
+options.set("Passx Unencrypted (JSON)", 1);
 options.set("KeePass (CSV)", 2);
 
 function getOptions() {
@@ -19,7 +20,6 @@ function getOptions() {
 }
 
 function isEncrypted(i) {
-    console.log(getOptions()[i]);
     return options.get(getOptions()[i]) > 10;
 }
 
@@ -33,14 +33,13 @@ function exportData(method) {
             name: user.getName(),
             passwordTest: encrypt(user.getPassword(), user.getPasswordTest()),
         };
-        output.entries = getEncryptedJSON(true, true, true, true, true, true, true);
+        output.entries = getEncryptedJSON(user.getPassword(), true, true, true, true, true, true, true);
     }
     
     // PassX Unencrypted
     if(methodId == 1) {
         output.passwordTest = user.getPasswordTest();
         output.entries = getUnencryptedJSON(true, true, true, true, true, true, true);
-        
     }
 
     // KeePass CSV
@@ -66,7 +65,11 @@ function exportData(method) {
         return output;
     }
 
-    return JSON.stringify(output);
+    return downloadFile({
+        data: JSON.stringify(output),
+        fileName: "passx-" + getCurrentDateAsString() + ".json",
+        fileType: 'text/json',
+    });
 }
 
 export {getOptions, isEncrypted, exportData};

@@ -24,6 +24,10 @@ errorMsgs.set("500", {
     title: "Internal Server Error",
     msg: "Sorry, it's our fault! Please try again later"
 });
+errorMsgs.set("665", {
+    "title": "Device lost",
+    "msg": "If you lost your device, please contact us via email (info@cuodex.net)"
+});
 errorMsgs.set("666", {
     "title": ":(",
     "msg": "We are very sad, that you left us"

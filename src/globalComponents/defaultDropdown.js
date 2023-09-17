@@ -14,7 +14,7 @@ function DefaultDropdown(props) {
     const items = props.items;
 
     return <div className={"default-dropdown" + (active ? " active" : "")} onClick={() => {setActive(!active);}}>
-        <div className="chevron"><ChevronIcon/></div>
+        <div className="chevron"><ChevronIcon up/></div>
         <h2>{items[activeItem]}</h2>
         <ul>
             {items.map((v, i) => {

@@ -7,6 +7,7 @@ import PopUp from "../../../globalComponents/popUp";
 
 
 import DefaultInputField from "../../../globalComponents/defaultInputField";
+import GenerateButton from "../../../globalComponents/generateButton";
 
 function EditEntryPopUp(props) {
 
@@ -58,9 +59,9 @@ function EditEntryPopUp(props) {
         <DefaultInputField placeholder="Username" defaultValue={username} onChange={(e) => setUsername(e.target.value)}/>
         <DefaultInputField placeholder="Email" defaultValue={email} onChange={(e) => setEmail(e.target.value)}/>
         <DefaultInputField placeholder="URL" defaultValue={url} onChange={(e) => setUrl(e.target.value)}/>
-        <DefaultInputField password placeholder="Password" defaultValue={password} onChange={(e) => setPassword(e.target.value)}/>
+        <DefaultInputField generate generatenextsibling generateName="Password" password placeholder="Password" defaultValue={password} onChange={(e) => setPassword(e.target.value)}/>
         {add ?
-        <DefaultInputField password placeholder="Repeat Password" onChange={(e) => {setRepeatPassword(e.target.value)}}/> :
+        <DefaultInputField generate generateprevsibling generateName="Password" password placeholder="Repeat Password" onChange={(e) => {setRepeatPassword(e.target.value)}}/> :
         ""}
         <DefaultInputField placeholder="Description" defaultValue={description} onChange={(e) => {setDescription(e.target.value)}} textarea />
     </PopUp>;
