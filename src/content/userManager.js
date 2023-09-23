@@ -204,12 +204,10 @@ function getAccountInformation(callback, callbackError) {
 }
 
 function confirmIdentity(otp, remember, onSuccess, onError) {
-    console.log("confirm");
     sendAuthRequest("auth/confirm-identity", "POST", {
         "otp": otp,
         "rememberMe": remember
     }, (data) => {
-        console.log(data);
         if(data.status.includes("200")) {
             onSuccess(data);
         }else {
@@ -223,7 +221,6 @@ function updateUserPassword(password, newPassword, callback) {
     var entries = [];
     for(var i = 0; i < getEntries().length; i++) {
         var entry = getEntries()[i];
-        console.log(entry);
         entries.push({
             "id": + entry.getId(),
             "title": encrypt(entry.getTitle(), newPassword),
@@ -277,4 +274,4 @@ function getPasswordTest(password) {
     return encryptEqualOutput("encryptionTest", password);
 }
 
-export {login, register, user, checkUser, updateUser, logout, confirmIdentity, getDummyUser, delUserInformation, updateUserPassword, deleteAccount, disableSessionCheck}
+export {login, register, user, checkUser, getPasswordTest, updateUser, logout, confirmIdentity, getDummyUser, delUserInformation, updateUserPassword, deleteAccount, disableSessionCheck}

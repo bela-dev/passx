@@ -19,6 +19,7 @@ import EditEntryPopUp from "./popup/editEntryPopUp";
 import ContextMenu from "./contextMenu";
 import { swipeLeft } from "../../globalComponents/animationWrapper";
 import ExportPopUp from "./popup/exportPopUp";
+import ImportPopUp from "./popup/importPopUp";
 
 function Dashboard(props) {
 
@@ -55,6 +56,7 @@ function Dashboard(props) {
     return <>
         {props.add ? <EditEntryPopUp add/> : <></>}
         {props.export ? <ExportPopUp/> : <></>}
+        {props.import ? <ImportPopUp/> : <></>}
         {props.edit ? <EditEntryPopUp entry={getEntryById(entryId.id)}/> : <></>}
         {props.delete ? <DeleteEntryPopUp entryId={entryId.id}/> : <></>}
         <ContextMenu/>

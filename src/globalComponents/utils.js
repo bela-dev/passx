@@ -28,6 +28,16 @@ const downloadFile = ({ data, fileName, fileType }) => {
   a.remove()
 }
 
+function getCurrentDateAndTimeAsString() {
+  var currentdate = new Date(); 
+  return currentdate.getDate() + "/"
+  + (currentdate.getMonth()+1)  + "/" 
+  + currentdate.getFullYear() + "/"  
+  + currentdate.getHours() + "/"  
+  + currentdate.getMinutes() + "/" 
+  + currentdate.getSeconds();
+}
+
 function getCurrentDateAsString() {
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, '0');
@@ -38,4 +48,4 @@ function getCurrentDateAsString() {
   return today;
 }
 
-export {genUUID, isNumberKey, downloadFile, getCurrentDateAsString}
+export {genUUID, isNumberKey, downloadFile, getCurrentDateAsString, getCurrentDateAndTimeAsString}

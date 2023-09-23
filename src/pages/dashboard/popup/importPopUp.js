@@ -1,19 +1,45 @@
-import React from "ract";
+import React, { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
-function ImportPopUp() {
+import "../style/importPopUp.css";
+
+import PopUp from "../../../globalComponents/popUp";
+
+import DefaultInputField from "../../../globalComponents/defaultInputField";
+import DefaultDropdown from "../../../globalComponents/defaultDropdown";
+import DefaultCheckbox from "../../../globalComponents/defaultCheckbox";
+import { getExportOption, getOptionTitles } from "../../../content/exportManager";
+import DefaultFilePicker from "../../../globalComponents/defaultFilePicker";
+import DefaultButton from "../../../globalComponents/defaultButton";
+import { user } from "../../../content/userManager";
+import ImportPopUpLoading from "./importPopUpLoading";
+
+function ImportPopUp(props) {
+
+    const navigate = useNavigate();
+
+    const [loading, setLoading] = useState(false);
+
+    const [fileContent, setFileContent] = useState();
+    const [activeFormat, setActiveFormat] = useState(-1);
+
+    if(loading) {
+        return <ImportPopUpLoading fileContent={fileContent} activeFormat={activeFormat}/>;
+    }
+
     return <PopUp 
-    className={"export"}
-    title={"Export Data"}
-    
-    warning={!isEncrypted(activeFormat) ? "This method does not support encryption! You should save unencrypted files only temporary." : "/e"}
+    noclose
+    className={"import"}
+    title={"Import Data"}
     btnLeft={{
         title: "Import",
         onClick: () => {
-            exportData(activeFormat);
+            setLoading(true);
+            return;
         }
     }}>
-        <DefaultDropdown items={getOptions()} onChange={setActiveFormat}/>
-        
+        <DefaultFilePicker onChange={setFileContent}/>
+        <DefaultDropdown items={getOptionTitles()} onChange={setActiveFormat}/>
     </PopUp>;
 }
 

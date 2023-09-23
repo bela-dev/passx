@@ -12,7 +12,6 @@ function updateEntryById(id, newEntry) {
     for(var i = 0; i < entries.length; i++) {
         if(entries[i].getId() == id) {
             entries[i] = newEntry;
-            console.log(entries[i]);
         }
     }
 }
@@ -54,6 +53,14 @@ function loadEntries(callback) {
     }, (error) => {
         console.log(error);
     });
+}
+
+function deleteEntries(title) {
+    for(var i = 0; i < entries.length; i++) {
+        if(entries[i].getTitle() === title) {
+            deleteEntry(entries[i].getId());
+        }
+    }
 }
 
 function deleteEntry(id) {
@@ -122,6 +129,16 @@ function getUnencryptedJSON(id, title, username, email, url, password, descripti
     return output;
 }
 
+function entryExists(title) {
+    for(var i = 0; i < getEntries().length; i++) {
+        var v = getEntries()[i];
+        if(v.getTitle() === title) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function getEncryptedJSON(key, id, title, username, email, url, password, description) {
     var output = [];
     for(var i = 0; i < getEntries().length; i++) {
@@ -154,22 +171,22 @@ class PasswordEntry {
     toEncryptedJSON(key, title, username, password, email, description, url, id) {
         var output = {};
         if(title) {
-            output.title = encrypt(key, this.getTitle());
+            output.title = encrypt(this.getTitle(), key);
         }
         if(username) {
-            output.username = encrypt(key, this.getUsername());
+            output.username = encrypt(this.getUsername(), key);
         }
         if(password) {
-            output.password = encrypt(key, this.getPassword());
+            output.password = encrypt(this.getPassword(), key);
         }
         if(email) {
-            output.email = encrypt(key, this.getEmail());
+            output.email = encrypt(this.getEmail(), key);
         }
         if(description) {
-            output.description = encrypt(key, this.getDescription());
+            output.description = encrypt(this.getDescription(), key);
         }
         if(url) {
-            output.url = encrypt(key, this.getUrl());
+            output.url = encrypt(this.getUrl(), key);
         }
         if(id) {
             output.id = this.getId();
@@ -212,4 +229,4 @@ class PasswordEntry {
 
 function clearEntries() {entries = [];}
 
-export { loadEntries, getEntries, getEntryById, addEntry, editEntry, deleteEntry, clearEntries, getUnencryptedJSON, getEncryptedJSON }
+export { PasswordEntry, loadEntries, getEntries, entryExists, deleteEntries, getEntryById, addEntry, editEntry, deleteEntry, clearEntries, getUnencryptedJSON, getEncryptedJSON }

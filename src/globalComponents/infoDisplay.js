@@ -5,7 +5,6 @@ import "./style/infoDisplay.css";
 const DELAY = 3500;
 
 function openInfo(title, msg) {
-    console.log("open info");
     const openInfoEvent = new CustomEvent("openInfo", {
         
         detail: {

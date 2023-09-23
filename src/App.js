@@ -1,5 +1,5 @@
 import React from "react";
-import {Route, Routes, BrowserRouter, Navigate} from "react-router-dom";
+import {Route, Routes, HashRouter, Navigate, BrowserRouter} from "react-router-dom";
 
 import Login from "./pages/login/login";
 import Register from "./pages/login/register";
@@ -27,29 +27,30 @@ function App() {
   return (
       <>
 
-          <BrowserRouter basename={"/"}>
+          <BrowserRouter>
               <Routes>
                   <Route path="/" element={<Navigate to={"dashboard"}/>} />
 
-                  <Route path="login" element={<Login/>}/>
-                  <Route path="relogin" element={<Relogin/>}/>
-                  <Route path="logout" element={<Logout/>}/>
-                  <Route path="register" element={<Register/>}/>
-                  <Route path="cookies" element={<Cookies/>}/>
-                  <Route path="2fa" element={<TWOFA/>}/>
+                  <Route path="/login" element={<Login/>}/>
+                  <Route path="/relogin" element={<Relogin/>}/>
+                  <Route path="/logout" element={<Logout/>}/>
+                  <Route path="/register" element={<Register/>}/>
+                  <Route path="/cookies" element={<Cookies/>}/>
+                  <Route path="/2fa" element={<TWOFA/>}/>
 
-                  <Route path="dashboard" element={<Dashboard/>}/>
-                  <Route path="dashboard/delete/:id" element={<Dashboard delete/>}/>
-                  <Route path="dashboard/edit/:id" element={<Dashboard edit/>}/>
-                  <Route path="dashboard/add" element={<Dashboard add/>}/>
-                  <Route path="dashboard/export" element={<Dashboard export/>}/>
+                  <Route path="/dashboard" element={<Dashboard/>}/>
+                  <Route path="/dashboard/delete/:id" element={<Dashboard delete/>}/>
+                  <Route path="/dashboard/edit/:id" element={<Dashboard edit/>}/>
+                  <Route path="/dashboard/add" element={<Dashboard add/>}/>
+                  <Route path="/dashboard/export" element={<Dashboard export/>}/>
+                  <Route path="/dashboard/import" element={<Dashboard import/>}/>
 
-                  <Route path="settings/:page" element={<Settings/>}/>
-                  <Route path="settings/:page/confirm" element={<Settings confirm/>}/>
+                  <Route path="/settings/:page" element={<Settings/>}/>
+                  <Route path="/settings/:page/confirm" element={<Settings confirm/>}/>
 
-                  <Route path="error/:error" element={<ErrorPage/>}/>
+                  <Route path="/error/:error" element={<ErrorPage/>}/>
 
-                  <Route path="change-api" element={<ChangeAPI/>}/>
+                  <Route path="/change-api" element={<ChangeAPI/>}/>
                   
                   <Route path="*" element={<Navigate to={"error/404"}/>} />
               </Routes>

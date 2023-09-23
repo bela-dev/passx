@@ -1,0 +1,64 @@
+.default-file-picker {
+    width: 250px;
+    height: 150px;
+    margin-left: calc(50% - 150px);
+    border: 2px dotted var(--main-color);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    margin-block: 50px;
+}
+
+.default-file-picker.drag {
+    border-style: solid;
+}
+
+.default-file-picker.drag svg {
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+
+.default-file-picker svg {
+    fill: var(--mid-grey);
+    width: 30px;
+    height: 45px;
+    transition: margin .3s ease;
+}
+
+.default-file-picker .remove svg {
+    width: 15px;
+    height: 20px;
+    margin-top: 0;
+    cursor: pointer;
+}
+
+.default-file-picker h1 {
+    font-size: 23px;
+    color: var(--mid-grey);
+    font-weight: 600;
+    overflow-x: hidden;
+}
+
+.default-file-picker h2 {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--mid-grey);
+}
+
+.default-file-picker button {
+    padding: 15px;
+    padding-block: 5px;
+    border: 2px solid var(--main-color);
+    background: transparent;
+    border-radius: 8px;
+    width: 100px;
+    margin-left: calc(50% - 50px);
+    margin-top: 20px;
+    color: var(--mid-grey);
+    cursor: pointer;
+    transition: margin .1s;
+}
+
+.default-file-picker button:hover {
+    margin-top: 18px;
+}

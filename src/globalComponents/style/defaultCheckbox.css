@@ -14,12 +14,11 @@
     border: 1px solid var(--main-color);
 }
 
-.default-checkbox .checkbox.checked::before {
+.default-checkbox .checkbox.checked .dot {
     background-color: var(--main-color);
     content: "";
     width: 7px;
     height: 7px;
-    position: absolute;
     border-radius: 3px;
     margin-left: 5px;
     margin-top: 5px;
@@ -39,4 +38,31 @@
 
 .default-checkbox label {
     margin-left: 10px;
+}
+
+.default-checkbox.textclick label {
+    cursor: pointer;
+}
+
+.default-checkbox .icons {
+    margin-left: 7px;
+}
+
+.default-checkbox .icons .icon {
+    fill: var(--white);
+    opacity: .5;
+}
+
+.default-checkbox .icons .icon.active {
+    opacity: 1;
+}
+
+.default-checkbox .icons .icon svg {
+    height: 17px;
+    margin-top: 3px;
+    transition: transform .2s;
+}
+
+.default-checkbox .icons .icon svg:hover {
+    transform: rotate(30deg);
 }

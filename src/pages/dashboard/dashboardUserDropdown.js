@@ -29,7 +29,9 @@ function DashboardUserDropdown() {
                 <li onClick={() => {
                     navigate("/dashboard/export");
                 }}>Export</li>
-                <li>Import</li>
+                <li onClick={() => {
+                    navigate("/dashboard/import");
+                }}>Import</li>
                 <li><hr></hr></li>
                 <li onClick={() => {
                     navigate("/logout");

@@ -10,7 +10,7 @@ import PopUp from "../../../globalComponents/popUp";
 import DefaultInputField from "../../../globalComponents/defaultInputField";
 import DefaultDropdown from "../../../globalComponents/defaultDropdown";
 import DefaultCheckbox from "../../../globalComponents/defaultCheckbox";
-import { exportData, getOptions, isEncrypted } from "../../../content/exportManager";
+import { getExportOption, getOptionTitles, isEncrypted } from "../../../content/exportManager";
 
 function ExportPopUp(props) {
 
@@ -21,7 +21,6 @@ function ExportPopUp(props) {
 
     const [currentExportData, setCurrentExportData] = useState(-1);
     if(currentExportData != -1) {
-        console.log(currentExportData);
         return <CSVDownload data={currentExportData} target="_blank" />;
     }
 
@@ -33,10 +32,10 @@ function ExportPopUp(props) {
     btnLeft={{
         title: "Export",
         onClick: () => {
-            exportData(activeFormat);
+            getExportOption(activeFormat).export();
         }
     }}>
-        <DefaultDropdown items={getOptions()} onChange={setActiveFormat}/>
+        <DefaultDropdown items={getOptionTitles()} onChange={setActiveFormat}/>
         
     </PopUp>;
 

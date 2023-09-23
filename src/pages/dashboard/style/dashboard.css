@@ -88,10 +88,11 @@
 
 .dashboard header .user-dropdown .dropdown ul li {
     font-size: 17px;
-    margin-block: 18px;
+    margin-block: 6px;
     color: var(--mid-grey);
     cursor: pointer;
     transition: margin .2s;
+    padding-block: 8px;
 }
 
 .dashboard header .user-dropdown .dropdown ul li:hover {

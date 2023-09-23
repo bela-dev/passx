@@ -1,0 +1,143 @@
+.import-loading {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .8);
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.import-loading h3 {
+    float: left;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.import-loading .loading {
+    width: 100%;
+    height: 5px;
+    border-radius: 2px;
+    background-color: var(--main-color);
+    float: left;
+    transition: width .4s ease;
+}
+
+.import-loading .display {
+    margin-top: 30vh;
+    width: 80%;
+    margin-inline: 10%;
+}
+
+.import-loading .error h2 {
+    color: var(--red);
+}
+
+.import-loading .success h2 {
+    color: var(--green);
+}
+
+.import-loading .display h2 {
+    float: left;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+}
+
+.import-loading .display button {
+    margin-top: 0;
+}
+
+.import-loading .choose-wrapper {
+    width: 100%;
+    display: flex;
+    
+}
+
+.import-loading .entry-list {
+    height: 40vh;
+    overflow-y: auto;
+    width: 30%;
+    float: left;
+    margin-top: 40px;
+}
+
+.import-loading .entry-list .entry {
+    float: left;
+    width: 100%;
+    color: var(--white);
+}
+
+.import-loading .entry-list .entry .checkbox {
+    float: left;
+}
+
+.import-loading .confirm {
+    width: 70%;
+    float: left;
+    margin-top: 40px;
+    padding-left: 30px;
+}
+
+.import-loading .confirm h3 {
+    font-size: 26px;
+}
+
+.import-loading .confirm button {
+    float: left;
+    margin-left: 0;
+    margin-right: 50px;
+}
+
+.import-loading .confirm .conflict {
+    margin-block: 30px;
+    height: 100px;
+}
+
+.import-loading .password-input {
+    width: 100%;
+    float: left;
+    height: 300px;
+    margin-top: 40px;
+}
+
+.import-loading input {
+    width: 300px;
+    border: 2px solid var(--main-color);
+    padding: 10px;
+    padding-inline: 20px;
+    background-color: transparent;
+    float: left;
+    color: var(--white);
+    border-radius: 10px;
+    outline: none;
+    height: 16px;
+    transition: margin .4s ease;
+}
+
+.import-loading input.fail {
+    margin-left: -4px;
+}
+
+.import-loading .confirm-password {
+    fill: var(--white);
+    cursor: pointer;
+    margin-left: 20px;
+    width: 20px;
+    margin-top: 0;
+    float: left;
+    transition: margin .2s;
+}
+
+.import-loading .confirm-password:hover {
+    margin-left: 22px;
+}
+
+.import-loading .confirm-password svg {
+    height: 22px;
+    margin-block: 7px;
+}

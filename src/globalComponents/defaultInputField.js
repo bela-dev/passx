@@ -21,6 +21,9 @@ function DefaultInputField(props) {
         onFocus: () => {
             setGenerateActive(true);
             setTimeout(() => {
+                if(inputEl.current.value != "") {
+                    return;
+                }
                 setGenerateVisible(true);
             }, 400);
         },
@@ -48,7 +51,6 @@ function DefaultInputField(props) {
 
     return <>
         {props.generate ? <GenerateButton onClick={() => {
-            console.log("click");
             var genPassword = Randomstring.generate(18);
             inputEl.current.value = genPassword;
             if(props.generatenextsibling) {
@@ -65,7 +67,6 @@ function DefaultInputField(props) {
                 }
                 elSibling.value = genPassword;
             }
-            console.log(genPassword);
         }} name={props.generateName} active={generateActive} visible={generateVisible}/> : <></>}
         {React.cloneElement(<input/>, elProps)}
         {props.password ? <div className={"default-input-icon icon" + (passwordVisible ? " invisible" : " visible")} onClick={() => {setPasswordVisible(!passwordVisible)}}>{!passwordVisible ? <VisibleIcon/> : <InvisibleIcon/>}</div> : <></>}

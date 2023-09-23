@@ -25,10 +25,7 @@ function PasswordChangePopUp(props) {
         btnLeft={{
             title: "Confirm",
             onClick: () => {
-                console.log(newPassword);
-                console.log(currentPassword);
                 updateUserPassword(currentPassword, newPassword, (d) => {
-                    console.log(d);
                     if(d.status.includes("200")) {
                         setParam("logoutMessage", "Password change was successfull. Please login again");
                         swipeRight("logout");
@@ -38,7 +35,6 @@ function PasswordChangePopUp(props) {
                                 error: d.message
                             }
                         }));
-                        console.log(d);
                     }
                 })
                 }

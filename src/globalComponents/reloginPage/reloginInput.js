@@ -7,7 +7,27 @@ function ReloginInput(props) {
 
     return <input className={props.className ? props.className : ""} type={props.number ? "text" : "password"} ref={el} onFocus={() => {
         el.current.value = "";
-    }} onKeyPress={(e) => {
+    }}
+    onPaste={(e) => {
+        var text = e.clipboardData.getData("text");
+        var el = e.target;
+        function nextPaste() {
+            el.value = text.charAt(0);
+            text = text.substring(1);
+            el = el.nextElementSibling;
+            if(!el) {
+                props.onFinish();
+                return;
+            }
+            el.focus();
+            if(text.length > 0) {
+                setTimeout(nextPaste, 25);
+            }
+        }
+        e.preventDefault();
+        nextPaste();
+    }}
+    onKeyPress={(e) => {
         if(e.key === "Enter") return;
         if(!isNumberKey(e) && props.number) {
             e.preventDefault();

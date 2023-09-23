@@ -26,9 +26,7 @@ var alreadySent = false;
 function handleLogin(data, setError) {
     setParam("loginMessage", null);
     setParam("loginError", null);
-    console.log(data);
     if(data.status.includes("200")) {
-        console.log("login suc");
         if(alreadySent) return;
         alreadySent = true;
         if(data.twofa) {

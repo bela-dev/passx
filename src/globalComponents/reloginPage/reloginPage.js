@@ -81,7 +81,6 @@ function ReloginPage(props) {
         }else {
             setReloginInputClassName("");
         }
-        console.log("check", window.innerWidth, inputWidth);
     }
 
 

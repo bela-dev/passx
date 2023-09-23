@@ -39,9 +39,7 @@ function Relogin() {
             }}>Login to a different account?</a>
         }
         onFinish={(txt, clear) => {
-            console.log("finish");
             login(getCookieUsername(), txt, (data) => {
-                console.log(data);
                 handleLogin(data, (e) => {
                     clear();
                 });

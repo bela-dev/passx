@@ -3,73 +3,40 @@ import { decrypt, encrypt } from "./encryptionManager";
 import { getEncryptedJSON, getEntries, getUnencryptedJSON } from "./entryManager";
 import { user } from "./userManager";
 
+import PassxBackupExport from "./export/passxBackup";
+import PassxUnencryptedExport from "./export/passxUnencrypted";
+
 // Possible export / import options: key is the number (< 10 = not encrypted > 10 encrypted)
-const options = new Map();
+const options = [
+    new PassxBackupExport(),
+    new PassxUnencryptedExport()
+];
 
-
-options.set("Passx Backup (JSON)", 11);
-options.set("Passx Unencrypted (JSON)", 1);
-options.set("KeePass (CSV)", 2);
+function getOptionTitles() {
+    var titles = [];
+    for(var i = 0; i < options.length; i++) {
+        var v = options[i];
+        titles.push(v.getTitle());
+    }
+    return titles;
+}
 
 function getOptions() {
     var output = [];
     for(var [key, value] of options) {
-        output.push(key);
+        output.push(key.getTitle());
     } 
     return output;
 }
 
+
 function isEncrypted(i) {
-    return options.get(getOptions()[i]) > 10;
+    if(i < 0) return undefined;
+    return options[i].isEncrypted();
 }
 
-function exportData(method) {
-    var methodId = options.get(getOptions()[method]);
-    var output = {};
-
-    // PassX Backup
-    if(methodId == 11) {
-        output.user = {
-            name: user.getName(),
-            passwordTest: encrypt(user.getPassword(), user.getPasswordTest()),
-        };
-        output.entries = getEncryptedJSON(user.getPassword(), true, true, true, true, true, true, true);
-    }
-    
-    // PassX Unencrypted
-    if(methodId == 1) {
-        output.passwordTest = user.getPasswordTest();
-        output.entries = getUnencryptedJSON(true, true, true, true, true, true, true);
-    }
-
-    // KeePass CSV
-    if(methodId == 2) {
-        output = [];
-        output.push({
-            "Account": "Sample Entry",
-            "Login Name": "User Name",
-            "Password": "Password",
-            "Web Site": "https://keepass.info/",
-            "Comments": "Notes"
-        });
-        for(var i = 0; i < getEntries().length; i++) {
-            var v = getEntries()[i];
-            output.push({
-                "Account": v.getTitle(),
-                "Login Name": v.getUsername(),
-                "Password": v.getPassword(),
-                "Web Site": v.getUrl(),
-                "Comments": v.getDescription() + (v.getEmail() ? ";" + v.getEmail() : "")
-            });
-        }
-        return output;
-    }
-
-    return downloadFile({
-        data: JSON.stringify(output),
-        fileName: "passx-" + getCurrentDateAsString() + ".json",
-        fileType: 'text/json',
-    });
+function getExportOption(i) {
+    return options[i];
 }
 
-export {getOptions, isEncrypted, exportData};
+export {getOptionTitles, isEncrypted, getExportOption};
