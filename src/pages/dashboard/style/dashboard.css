@@ -86,7 +86,7 @@
     
 }
 
-.dashboard header .user-dropdown .dropdown ul li {
+.dashboard header .user-dropdown .dropdown ul li:not(.hr) {
     font-size: 17px;
     margin-block: 6px;
     color: var(--mid-grey);
@@ -95,7 +95,7 @@
     padding-block: 8px;
 }
 
-.dashboard header .user-dropdown .dropdown ul li:hover {
+.dashboard header .user-dropdown .dropdown ul li:not(.hr):hover {
     margin-left: 2px;
 }
 
@@ -143,4 +143,20 @@
     opacity: .4;
     position: absolute;
     top: 62.5px;
+}
+
+.dashboard .empty {
+    width: 100%;
+}
+
+.dashboard .empty h1 {
+    text-align: center;
+    color: var(--light-grey);
+    font-weight: 500;
+    opacity: .8;
+    margin-top: 140px;
+}
+
+.dashboard .empty button {
+    margin-top: 15px;
 }

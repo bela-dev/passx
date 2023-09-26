@@ -24,9 +24,7 @@ function ProfileSettings(props) {
         <DefaultInputField placeholder="Enter Username" defaultValue={user.getName()} onChange={(e) => {setUsername(e.target.value);setError("");setInfo(undefined);}}/>
         <label>Email</label>
         <DefaultInputField placeholder="Enter Email" defaultValue={user.getEmail()} onChange={(e) => {setEmail(e.target.value);setError("");setInfo(undefined);}} email/>
-        <label>Password</label>
-        <DefaultInputField placeholder="Enter Password" onChange={(e) => {setPassword(e.target.value);setError("");setInfo(undefined);}} password/>
-
+        
         <a onClick={() => {navigate("/settings/password");}}>Change Master Password?</a>
         <DefaultButton onClick={() => {
             updateUser(password, username, email, (d) => {

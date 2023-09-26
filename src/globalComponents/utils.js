@@ -1,3 +1,5 @@
+import { openInfo } from "./infoDisplay";
+
 function genUUID() {
     return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
           (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
@@ -48,4 +50,24 @@ function getCurrentDateAsString() {
   return today;
 }
 
-export {genUUID, isNumberKey, downloadFile, getCurrentDateAsString, getCurrentDateAndTimeAsString}
+function copyToClipboard(txt, password) {
+  navigator.clipboard.writeText(txt);
+  if(password) {
+    var newText = "";
+    for(var i = 0; i < txt.length; i++) {
+      newText += '•';
+    }
+    txt = newText;
+  }
+  openInfo("Copied", 'Copied "' + txt + '"');
+}
+
+function hasNumber(myString) {
+  return /\d/.test(myString);
+}
+
+function hasLetter(str) {
+  return /[a-zA-Z]/.test(str);
+}
+
+export {genUUID, isNumberKey, downloadFile, getCurrentDateAsString, getCurrentDateAndTimeAsString, copyToClipboard, hasNumber, hasLetter}

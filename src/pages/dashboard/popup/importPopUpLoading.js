@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
+import XMarkIcon from "../../../assets/icons/xmark";
 import CheckIcon from "../../../assets/icons/check";
 import ReplaceIcon from "../../../assets/icons/replace";
 
@@ -29,7 +30,6 @@ function ImportPopUpLoading(props) {
                 if(!props.fileContent) {
                     setErrorText("You have to choose a file first");
                 }else if(!fileContent) {
-                    fileContent = JSON.parse(props.fileContent);
                     exportOption = getExportOption(props.activeFormat);
                     executeLoadingStep(5);
                 }
@@ -55,7 +55,7 @@ function ImportPopUpLoading(props) {
     if(errorText || successText) {
         return <div className="import-loading">
             <div className={"display" + (successText ? " success" : "") + (errorText ? " error" : "")}>
-                <h2>{errorText}{successText}</h2>
+                <h2><div className="import-icon">{successText ? <CheckIcon/> : <XMarkIcon/>}</div>{errorText}{successText}</h2>
                 <DefaultButton onClick={() => {
                     navigate("/dashboard");
                 }}>Ok</DefaultButton>
@@ -66,18 +66,23 @@ function ImportPopUpLoading(props) {
     const loadingSteps = [];
     loadingSteps[5] = () => {
         setLoadingText("Check format");
-        if(exportOption.check(fileContent)) {
-            executeLoadingStep(10);
-        }else {
-            setErrorText("Your file format is not a valid!");
+        try {
+            fileContent = JSON.parse(props.fileContent);
+            if(exportOption.check(fileContent)) {
+                executeLoadingStep(10);
+            }else {
+                setErrorText("Your file format is not valid!");
+            }
+        } catch (error) {
+            setErrorText("Your file format is not valid!");
         }
+        
     };
     loadingSteps[10] = () => {
         setLoadingText("Authorize");
         if(exportOption.checkPassword(fileContent, user.getPassword())) {
             executeLoadingStep(15);
         }else {
-            //TODO: Possibility to enter different password
             executeLoadingStep(12);
         }
     };

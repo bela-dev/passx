@@ -20,6 +20,7 @@ import ContextMenu from "./contextMenu";
 import { swipeLeft } from "../../globalComponents/animationWrapper";
 import ExportPopUp from "./popup/exportPopUp";
 import ImportPopUp from "./popup/importPopUp";
+import DefaultButton from "../../globalComponents/defaultButton";
 
 function Dashboard(props) {
 
@@ -68,13 +69,16 @@ function Dashboard(props) {
                     <div className="add" onClick={() => navigate("/dashboard/add")}><AddIcon/></div>
                     <DashboardUserDropdown/>
                 </header>
-                <DashboardTable
+                {entries.length > 0 ? <DashboardTable
                     entries={entries} 
                     filter={filter}
                     wrapperWidth={dashboardEl.current ? getComputedStyle(dashboardEl.current).getPropertyValue("--width").replace("px", "") : 0}
                     wrapperHeight={dashboardEl.current ? getComputedStyle(dashboardEl.current).getPropertyValue("--height").replace("px", "") : 0}
-
-                />
+                /> : <div className="empty">
+                    <h1>Seems a bit empty</h1>
+                    <DefaultButton onClick={() => navigate("/dashboard/add")}>Add Entry</DefaultButton>
+                </div>}
+                
             </div>
         </DefaultWrapper>
     </>;

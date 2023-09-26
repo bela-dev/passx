@@ -21,13 +21,13 @@ function Cookies() {
                 <h1>We use cookies!</h1>
 
                 <div className="content">
-                    <p className="medium">We us cookies on PassX to save your user data (except the password) after you logged in. So you only have to enter your password to login again.</p>
+                    <p className="medium">PassX uses cookies to be able to store your username on your device to speed up the login process.</p>
 
                     <DefaultButton onClick={() => {
                         storeUser(user);
                         swipeLeft("dashboard");
                     }}>Accept</DefaultButton>
-                    <DefaultButton onClick={() => {
+                    <DefaultButton grey onClick={() => {
                         swipeLeft("dashboard");
                     }}>Decline</DefaultButton>
                 </div>

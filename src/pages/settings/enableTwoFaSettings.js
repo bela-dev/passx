@@ -48,7 +48,7 @@ function EnableTwoFaSettings() {
                 }
             }} onKeyUp={(e) => {
                 if(e.target.value.length >= 6) {
-                    finish();
+                    //finish();
                 }
             }}/>
             <a onClick={finish}>Enter</a>

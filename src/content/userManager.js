@@ -9,6 +9,7 @@ import { SERVER_SIDE_ENCRYPTION } from "./apiManager";
 import { getCookieSessionId, getCookieUsername, storeUser } from "./cookieManager";
 import { unstoreUser } from "./cookieManager";
 import { is2FAActivated } from "./2faManager";
+import { hasLetter, hasNumber } from "../globalComponents/utils";
 
 
 class User {
@@ -73,7 +74,7 @@ function checkUser(navigate) {
         }
         if(!navigate) return;
         setTimeout(() => {
-            navigate("/error/401");
+            navigate("/login");
         }, 100);
         return false;
     }
@@ -133,6 +134,20 @@ function register(username, email, password, repeatPassword, callback) {
         callback({
             status: "400 - Bad Request",
             message: "Please fill in all fields"
+        });
+        return;
+    }
+    if(!(hasNumber(password) && hasLetter(password))) {
+        callback({
+            status: "400 - Bad Request",
+            message: "Your password must contain letters numbers"
+        });
+        return;
+    }
+    if(password.length < 8) {
+        callback({
+            status: "400 - Bad Request",
+            message: "Your password must contain at least 8 characters"
         });
         return;
     }
@@ -219,6 +234,20 @@ function confirmIdentity(otp, remember, onSuccess, onError) {
 
 function updateUserPassword(password, newPassword, callback) {
     var entries = [];
+    if(!(hasNumber(newPassword) && hasLetter(newPassword))) {
+        callback({
+            status: "400 - Bad Request",
+            message: "Your password must contain letters numbers"
+        });
+        return;
+    }
+    if(newPassword.length < 8) {
+        callback({
+            status: "400 - Bad Request",
+            message: "Your password must contain at least 8 characters"
+        });
+        return;
+    }
     for(var i = 0; i < getEntries().length; i++) {
         var entry = getEntries()[i];
         entries.push({

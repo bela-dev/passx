@@ -24,3 +24,7 @@
     margin-top: 47px;
     margin-bottom: 3px;
 }
+
+.button1.grey {
+    background-color: var(--lighter-grey);
+}

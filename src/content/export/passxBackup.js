@@ -9,8 +9,11 @@ class PassxBackupExport {
     getType() {
         return "passx-backup-enc";
     }
+    getFormat() {
+        return "json";
+    }
     getTitle() {
-        return "Passx Backup (JSON)";
+        return "Passx Backup (" + this.getFormat().toUpperCase() + ")";
     }
     isEncrypted() {
         return true;

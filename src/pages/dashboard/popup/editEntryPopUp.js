@@ -20,7 +20,6 @@ function EditEntryPopUp(props) {
     const [email, setEmail] = useState(props.entry ? props.entry.getEmail() : "");
     const [url, setUrl] = useState(props.entry ? props.entry.getUrl() : "");
     const [password, setPassword] = useState(props.entry ? props.entry.getPassword() : "");
-    const [repeatPassword, setRepeatPassword] = useState(props.entry ? props.entry.getPassword() : "");
     const [description, setDescription] = useState(props.entry ? props.entry.getDescription() : "");
 
     useEffect(() => {
@@ -38,10 +37,6 @@ function EditEntryPopUp(props) {
                 return;
             }
             if(add) {
-                if(password != repeatPassword && (password != "" || repeatPassword != "")) {
-                    openInfo("Error", "Your entered passwords do not match");
-                    return;
-                }
                 addEntry(title, username, url, email, password, description);
             }else {
                 editEntry(props.entry.getId(), title, username, url, email, password, description);
@@ -59,10 +54,7 @@ function EditEntryPopUp(props) {
         <DefaultInputField placeholder="Username" defaultValue={username} onChange={(e) => setUsername(e.target.value)}/>
         <DefaultInputField placeholder="Email" defaultValue={email} onChange={(e) => setEmail(e.target.value)}/>
         <DefaultInputField placeholder="URL" defaultValue={url} onChange={(e) => setUrl(e.target.value)}/>
-        <DefaultInputField generate generatenextsibling generateName="Password" password placeholder="Password" defaultValue={password} onChange={(e) => setPassword(e.target.value)}/>
-        {add ?
-        <DefaultInputField generate generateprevsibling generateName="Password" password placeholder="Repeat Password" onChange={(e) => {setRepeatPassword(e.target.value)}}/> :
-        ""}
+        <DefaultInputField generate generateName="Password" password placeholder="Password" defaultValue={password} onChange={(e) => setPassword(e.target.value)}/>
         <DefaultInputField placeholder="Description" defaultValue={description} onChange={(e) => {setDescription(e.target.value)}} textarea />
     </PopUp>;
 

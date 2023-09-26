@@ -33,19 +33,25 @@
     margin-inline: 10%;
 }
 
-.import-loading .error h2 {
-    color: var(--red);
+.import-loading .display.error h2 svg {
+    fill: var(--red);
 }
 
-.import-loading .success h2 {
-    color: var(--green);
+.import-loading .display.success h2 svg {
+    fill: var(--green);
+}
+
+.import-loading .display h2 .import-icon {
+    margin-inline: 5px;
+    height: 30px;
 }
 
 .import-loading .display h2 {
     float: left;
     width: 100%;
-    height: 60px;
+    height: 100px;
     text-align: center;
+    color: white;
 }
 
 .import-loading .display button {

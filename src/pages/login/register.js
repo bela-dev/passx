@@ -29,7 +29,7 @@ function Register(props) {
 
     function handleRegister(data) {
         if(data.status.includes("201")) {
-            setParam("loginMessage", "Welcome " + username);
+            setParam("loginMessage", username);
             setAnimationout(true);
             setTimeout(() => navigate("/login"), 100);
         }else {
@@ -48,8 +48,8 @@ function Register(props) {
     >
         <LoginInputField name="Username" onChange={setUsername}/>
         <LoginInputField name="Email" onChange={setEmail}/>
-        <LoginInputField password name="Repeat Password" onChange={setRepeatPassword}/>
         <LoginInputField password name="Password" onChange={setPassword}/>
+        <LoginInputField password name="Repeat Password" onChange={setRepeatPassword}/>
     </LoginCard>;
 
 }

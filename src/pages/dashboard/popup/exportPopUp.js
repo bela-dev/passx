@@ -30,6 +30,7 @@ function ExportPopUp(props) {
     
     warning={!isEncrypted(activeFormat) ? "This method does not support encryption! You should save unencrypted files only temporary." : "/e"}
     btnLeft={{
+        className: "dropdown-button",
         title: "Export",
         onClick: () => {
             getExportOption(activeFormat).export();

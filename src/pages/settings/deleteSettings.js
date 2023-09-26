@@ -23,7 +23,7 @@ function DeleteSettings() {
 
     return <div className="delete">
         <p className="error">{error}</p>
-        <p><WarningIcon/>When you delete your account there ist no way that this action can be undone!</p>
+        <p><WarningIcon/>When you delete your account there ist no way this action can be undone!</p>
         <label>Password</label>
         <DefaultInputField placeholder="Enter New Password" onChange={(e) => {setPassword(e.target.value)}} password/>
         <label>Repeat Password</label>

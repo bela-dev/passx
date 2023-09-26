@@ -5,7 +5,7 @@ import LoginCard from "./logincard";
 
 import { isCookieAllowed } from "../../content/cookieManager";
 
-import { login } from "../../content/userManager";
+import { getPasswordTest, login } from "../../content/userManager";
 import { getParam, setParam } from "../../globalComponents/globalParams";
 import { loadEntries } from "../../content/entryManager";
 import { swipeLeft } from "../../globalComponents/animationWrapper";
@@ -51,12 +51,12 @@ function Login(props) {
     return <LoginCard
         name="Login"
         error={getParam("loginError") ? getParam("loginError") : error}
-        successMessage={getParam("loginMessage")}
+        successMessage={getParam("loginMessage") ? "Welcome " + getParam("loginMessage") : ""}
         linkTitle="Create new account?"
         linkAddress="register"
         onClick={() => {login(username, password, (data) => {handleLogin(data, setError);})}}
     >
-        <LoginInputField name="Username" onChange={setUsername}/>
+        <LoginInputField name="Username" onChange={setUsername} defaultValue={getParam("loginMessage") ? getParam("loginMessage") : ""}/>
         <LoginInputField name="Password" onChange={setPassword} password />
     </LoginCard>;
 

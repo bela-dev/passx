@@ -53,13 +53,13 @@ function PopUp(props) {
             {props.children}
 
             <div className="button-space">
-                <DefaultButton onClick={() => {
+                <DefaultButton className={props.btnLeft.className ? props.btnLeft.className : ""} onClick={() => {
                     props.btnLeft.onClick();
                     if(!props.noclose) {
                         close()
                     }
                 }}>{props.btnLeft.title}</DefaultButton>
-                {props.btnRight ? <DefaultButton onClick={() => {
+                {props.btnRight ? <DefaultButton className={props.btnLeft.className ? props.btnLeft.className : ""} onClick={() => {
                     
                     
                     if(!props.noclose) {
