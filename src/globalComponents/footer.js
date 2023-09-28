@@ -10,7 +10,7 @@ import "./style/footer.css";
 
 function Footer() {
 
-    var changeApiDisabled = user || getCookieUsername() != undefined || window.location.href.endsWith("change-api");
+    var changeApiDisabled = (user || getCookieUsername() != undefined || window.location.href.endsWith("change-api")) && !(window.location.href.endsWith("login") || window.location.href.endsWith("register"));
 
     function handleChangeApi() {
         if(changeApiDisabled) {

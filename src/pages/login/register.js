@@ -29,7 +29,7 @@ function Register(props) {
 
     function handleRegister(data) {
         if(data.status.includes("201")) {
-            setParam("loginMessage", username);
+            setParam("loginUsername", username);
             setAnimationout(true);
             setTimeout(() => navigate("/login"), 100);
         }else {

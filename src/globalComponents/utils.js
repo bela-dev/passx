@@ -51,6 +51,10 @@ function getCurrentDateAsString() {
 }
 
 function copyToClipboard(txt, password) {
+  if(!txt) {
+    openInfo("Copy failed", "Cannot copy an empty text");
+    return;
+  }
   navigator.clipboard.writeText(txt);
   if(password) {
     var newText = "";

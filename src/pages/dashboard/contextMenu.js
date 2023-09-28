@@ -66,9 +66,9 @@ function ContextMenu(props) {
         left: x + "px",
         top: y + "px"
     }}>
-        <a onClick={() => {copyToClipboard(getEntryById(entryId).getUsername());}}>Copy Username</a>
-        <a onClick={() => {copyToClipboard(getEntryById(entryId).getEmail());}}>Copy Email</a>
-        <a onClick={() => {copyToClipboard(getEntryById(entryId).getPassword(), true);}}>Copy Password</a>
+        <a onClick={() => {copyToClipboard(getEntryById(entryId).getUsername());close();}}>Copy Username</a>
+        <a onClick={() => {copyToClipboard(getEntryById(entryId).getEmail());close();}}>Copy Email</a>
+        <a onClick={() => {copyToClipboard(getEntryById(entryId).getPassword(), true);close();}}>Copy Password</a>
         <a className="no-hover"><hr/></a>
         <a onClick={() => {
             navigate("/dashboard/edit/" + entryId);

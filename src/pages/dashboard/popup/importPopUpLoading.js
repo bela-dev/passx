@@ -66,14 +66,10 @@ function ImportPopUpLoading(props) {
     const loadingSteps = [];
     loadingSteps[5] = () => {
         setLoadingText("Check format");
-        try {
-            fileContent = JSON.parse(props.fileContent);
-            if(exportOption.check(fileContent)) {
-                executeLoadingStep(10);
-            }else {
-                setErrorText("Your file format is not valid!");
-            }
-        } catch (error) {
+        fileContent = props.fileContent;
+        if(exportOption.check(fileContent)) {
+            executeLoadingStep(10);
+        }else {
             setErrorText("Your file format is not valid!");
         }
         

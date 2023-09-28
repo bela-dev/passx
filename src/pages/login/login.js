@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import LoginInputField from "./loginInputField";
 import LoginCard from "./logincard";
@@ -25,6 +25,7 @@ var alreadySent = false;
 
 function handleLogin(data, setError) {
     setParam("loginMessage", null);
+    setParam("loginUsername", null);
     setParam("loginError", null);
     if(data.status.includes("200")) {
         if(alreadySent) return;
@@ -43,20 +44,28 @@ function handleLogin(data, setError) {
 
 function Login(props) {
 
+    const [loginMessage, setLoginMessage] = useState(getParam("loginMessage"));
+
     const [error, setError] = useState("");
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
+    useEffect(() => {
+        if(getParam("loginUsername")) {
+            setLoginMessage("Welcome " + getParam("loginUsername"));
+        }
+    });
+
     return <LoginCard
         name="Login"
         error={getParam("loginError") ? getParam("loginError") : error}
-        successMessage={getParam("loginMessage") ? "Welcome " + getParam("loginMessage") : ""}
+        successMessage={loginMessage}
         linkTitle="Create new account?"
         linkAddress="register"
         onClick={() => {login(username, password, (data) => {handleLogin(data, setError);})}}
     >
-        <LoginInputField name="Username" onChange={setUsername} defaultValue={getParam("loginMessage") ? getParam("loginMessage") : ""}/>
+        <LoginInputField name="Username" onChange={setUsername} defaultValue={getParam("loginUsername") ? getParam("loginUsername") : ""}/>
         <LoginInputField name="Password" onChange={setPassword} password />
     </LoginCard>;
 

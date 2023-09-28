@@ -33,12 +33,19 @@ class PassxBackupExport {
         });
     }
     check(data) {
+        try {
+            data = JSON.parse(data);
+        } catch (error) {
+            return false;
+        }
         return data.user.passwordTest && data.entries && data.type === this.getType();
     }
     checkPassword(data, password) {
+        data = JSON.parse(data);
         return decrypt(data.user.passwordTest.toString(), password) === getPasswordTest(password);
     }
     import(data, password) {
+        data = JSON.parse(data);
         var output = [];
         var entries = data.entries;
         for(var i = 0; i < entries.length; i++) {

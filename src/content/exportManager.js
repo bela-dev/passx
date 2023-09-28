@@ -5,11 +5,13 @@ import { user } from "./userManager";
 
 import PassxBackupExport from "./export/passxBackup";
 import PassxUnencryptedExport from "./export/passxUnencrypted";
+import GlobalCSV from "./export/globalCSV";
 
 // Possible export / import options: key is the number (< 10 = not encrypted > 10 encrypted)
 const options = [
     new PassxBackupExport(),
-    new PassxUnencryptedExport()
+    new PassxUnencryptedExport(),
+    new GlobalCSV(),
 ];
 
 function getOptionTitles() {
