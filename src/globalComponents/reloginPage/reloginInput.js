@@ -3,6 +3,8 @@ import { isNumberKey } from "../utils";
 
 function ReloginInput(props) {
 
+    var strgPressed = false;
+
     const el = useRef();
 
     return <input className={props.className ? props.className : ""} type={props.number ? "text" : "password"} ref={el} onFocus={() => {
@@ -27,6 +29,11 @@ function ReloginInput(props) {
         e.preventDefault();
         nextPaste();
     }}
+    onKeyDown={(e) => {
+        if(e.which == 17) {
+            strgPressed = true;
+        }
+    }}
     onKeyPress={(e) => {
         if(e.key === "Enter") return;
         if(!isNumberKey(e) && props.number) {
@@ -44,7 +51,16 @@ function ReloginInput(props) {
     }} onKeyUp={(e) => {
         if(e.keyCode === 8 && e.target.previousElementSibling) {
             e.target.previousElementSibling.focus();
+            if(strgPressed) {
+                var sib = e.target.previousElementSibling;
+                while(sib.previousElementSibling) {
+                    sib.focus();
+                    sib = sib.previousElementSibling;
+                }
+                sib.focus();
+            }
         }
+        strgPressed = false;
     }}></input>;
 }
 

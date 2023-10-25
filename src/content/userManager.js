@@ -129,6 +129,36 @@ function delUserInformation() {
     unstoreUser();
 }
 
+function checkPasswordStrength(password, callback) {
+    sendRequest("general/common-passwords/?amount=10000", "GET", {}, (data) => {
+        var commonPasswords = data.data.passwords;
+        if(commonPasswords.includes(password)) {
+            callback({
+                status: "400 - Bad Request",
+                message: "Your password is one of the 10000 most common ones"
+            });
+        }else {
+            if(!(hasNumber(password) && hasLetter(password))) {
+                callback({
+                    status: "400 - Bad Request",
+                    message: "Your password must contain letters numbers"
+                });
+            }
+            if(password.length < 8) {
+                callback({
+                    status: "400 - Bad Request",
+                    message: "Your password must contain at least 8 characters"
+                });
+            }
+            callback(true);
+        }
+    }, (err) => {
+        openInfo("Error", "An error occured while recieving the most common passwords");
+    });
+    
+
+}
+
 function register(username, email, password, repeatPassword, callback) {
     if(!(username && password && repeatPassword)) {
         callback({
@@ -137,38 +167,31 @@ function register(username, email, password, repeatPassword, callback) {
         });
         return;
     }
-    if(!(hasNumber(password) && hasLetter(password))) {
-        callback({
-            status: "400 - Bad Request",
-            message: "Your password must contain letters numbers"
-        });
-        return;
-    }
-    if(password.length < 8) {
-        callback({
-            status: "400 - Bad Request",
-            message: "Your password must contain at least 8 characters"
-        });
-        return;
-    }
-    if(password != repeatPassword) {
-        callback({
-            status: "400 - Bad Request",
-            message: "The passwords you entered do not match"
-        });
-        return;
-    }
-    sendRequest("auth/register", "POST", {
-        "username": username,
-        "email": email,
-        "passwordTest": getPasswordTest(password),
-        "serverSideEncryption": true,
-        "hutchaToken": ""
-    }, (data) => {
-        callback(data);
-    }, (error) => {
-        callback(error);
+    checkPasswordStrength(password, (c) => {
+        if(c != true) {
+            callback(c);
+        }else {
+            if(password != repeatPassword) {
+                callback({
+                    status: "400 - Bad Request",
+                    message: "The passwords you entered do not match"
+                });
+                return;
+            }
+            sendRequest("auth/register", "POST", {
+                "username": username,
+                "email": email,
+                "passwordTest": getPasswordTest(password),
+                "serverSideEncryption": true,
+                "hutchaToken": ""
+            }, (data) => {
+                callback(data);
+            }, (error) => {
+                callback(error);
+            });
+        }
     });
+    
 }
 
 function login(username, password, callback) {
@@ -234,41 +257,34 @@ function confirmIdentity(otp, remember, onSuccess, onError) {
 
 function updateUserPassword(password, newPassword, callback) {
     var entries = [];
-    if(!(hasNumber(newPassword) && hasLetter(newPassword))) {
-        callback({
-            status: "400 - Bad Request",
-            message: "Your password must contain letters numbers"
-        });
-        return;
-    }
-    if(newPassword.length < 8) {
-        callback({
-            status: "400 - Bad Request",
-            message: "Your password must contain at least 8 characters"
-        });
-        return;
-    }
-    for(var i = 0; i < getEntries().length; i++) {
-        var entry = getEntries()[i];
-        entries.push({
-            "id": + entry.getId(),
-            "title": encrypt(entry.getTitle(), newPassword),
-            "url": encrypt(entry.getUrl(), newPassword),
-            "username": encrypt(entry.getUsername(), newPassword),
-            "email": encrypt(entry.getEmail(), newPassword),
-            "password": encrypt(entry.getPassword(), newPassword),
-            "description": encrypt(entry.getDescription(), newPassword),
-        });
-    }
-    sendAuthRequest("account/change-password", "PATCH", {
-        "passwordTest": getPasswordTest(password),
-        "newPasswordTest": getPasswordTest(newPassword),
-        "entries": entries
-    }, (data) => {
-        callback(data);
-    }, (error) => {
-        openInfo("Error", error.message);
-    });
+    checkPasswordStrength(newPassword, (c) => {
+        if(c != true) {
+            callback(c);
+        }else {
+            for(var i = 0; i < getEntries().length; i++) {
+                var entry = getEntries()[i];
+                entries.push({
+                    "id": + entry.getId(),
+                    "title": encrypt(entry.getTitle(), newPassword),
+                    "url": encrypt(entry.getUrl(), newPassword),
+                    "username": encrypt(entry.getUsername(), newPassword),
+                    "email": encrypt(entry.getEmail(), newPassword),
+                    "password": encrypt(entry.getPassword(), newPassword),
+                    "description": encrypt(entry.getDescription(), newPassword),
+                });
+            }
+            sendAuthRequest("account/change-password", "PATCH", {
+                "passwordTest": getPasswordTest(password),
+                "newPasswordTest": getPasswordTest(newPassword),
+                "entries": entries
+            }, (data) => {
+                callback(data);
+            }, (error) => {
+                openInfo("Error", error.message);
+            });
+
+        }
+    })
 }
 
 function deleteAccount(password, callback) {
