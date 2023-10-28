@@ -6,8 +6,14 @@
 
     .popup {
         --padding-block: 30px;
-        --width: calc(300px + 2*var(--padding));
+        --width: calc(370px + 2*var(--padding));
         --height: calc(580px + 2*var(--padding-block));
-        top: calc(50vh - var(--height) / 2);
+        top: calc(50vh - var(--height) / 2 - 17.5px);
+    }
+}
+
+@media (max-width: 700px) {
+    .popup {
+        --width: calc(280px + 2*var(--padding));
     }
 }

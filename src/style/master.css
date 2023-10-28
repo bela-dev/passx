@@ -28,6 +28,11 @@
     height: 19px;
 }
 
+.box-wrapper {
+    margin-top: -35px;/** to take care of footer **/
+
+}
+
 .box-wrapper, .popup {
     --padding: 65px;
     --padding-block: 40px;
