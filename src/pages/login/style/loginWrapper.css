@@ -15,6 +15,11 @@ div.login-wrapper {
     box-shadow: none;
 }
 
+div.login-wrapper .login-flip {
+    margin-top: 0;
+}
+
+
 .login-flip {
     position: relative;
     transition: transform .2s;

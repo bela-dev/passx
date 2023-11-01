@@ -36,7 +36,8 @@
     font-size: 23px;
     color: var(--mid-grey);
     font-weight: 600;
-    overflow-x: hidden;
+    overflow: hidden;
+    max-height: 55px;
 }
 
 .default-file-picker h2 {

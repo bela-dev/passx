@@ -8,11 +8,12 @@ import PopUp from "../../../globalComponents/popUp";
 import DefaultInputField from "../../../globalComponents/defaultInputField";
 import DefaultDropdown from "../../../globalComponents/defaultDropdown";
 import DefaultCheckbox from "../../../globalComponents/defaultCheckbox";
-import { getExportOption, getOptionTitles } from "../../../content/exportManager";
+import { checkFileEncryptionType, getExportOption, getOptionTitles } from "../../../content/exportManager";
 import DefaultFilePicker from "../../../globalComponents/defaultFilePicker";
 import DefaultButton from "../../../globalComponents/defaultButton";
 import { user } from "../../../content/userManager";
 import ImportPopUpLoading from "./importPopUpLoading";
+import { openInfo } from "../../../globalComponents/infoDisplay";
 
 function ImportPopUp(props) {
 
@@ -22,6 +23,7 @@ function ImportPopUp(props) {
 
     const [fileContent, setFileContent] = useState();
     const [activeFormat, setActiveFormat] = useState(-1);
+    const [defaultFormat, setDefaultFormat] = useState(-1);
 
     if(loading) {
         return <ImportPopUpLoading fileContent={fileContent} activeFormat={activeFormat}/>;
@@ -38,8 +40,22 @@ function ImportPopUp(props) {
             return;
         }
     }}>
-        <DefaultFilePicker onChange={setFileContent}/>
-        <DefaultDropdown items={getOptionTitles()} onChange={setActiveFormat}/>
+        <DefaultFilePicker onChange={(v, callbackValid) => {
+            if(!v) {
+                setFileContent(v);
+                setDefaultFormat(-1);
+                return;
+            }
+            var checkResult = checkFileEncryptionType(v);
+            if(checkResult != -1) {
+                setFileContent(v);
+                setDefaultFormat(checkResult);
+            }else {
+                openInfo("Error", "Invalid File");
+                callbackValid(false);
+            }
+        }}/>
+        <DefaultDropdown items={getOptionTitles()} onChange={setActiveFormat} forceActive={defaultFormat}/>
     </PopUp>;
 }
 

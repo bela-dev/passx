@@ -18,7 +18,11 @@ function DefaultFilePicker(props) {
         reader.readAsText(f);
         setFile(f.name);
         reader.onload = () => {
-            props.onChange(reader.result);
+            props.onChange(reader.result, (v) => {
+                if(!v) {
+                    setFile();
+                }
+            });
         };
     }
 
@@ -43,12 +47,12 @@ function DefaultFilePicker(props) {
             updateFile(e.target.files[0]);
         }}/>
         {file ? <FileIcon/> : <CloudArrowIcon/>}
-        <h1>{file ? file : "Drag & Drop File Here"}</h1>
+        <h1 title={file ? file : ""}>{file ? file : "Drag & Drop File Here"}</h1>
         {file ? <></> : <>
             <h2>OR</h2>
             <button onClick={() => {inputFile.current.click();}}>Browse File</button>
         </>}
-        {file ? <div className="remove" onClick={() => {setFile();}}><XMarkIcon/></div> : ""}
+        {file ? <div title="Remove file" className="remove" onClick={() => {setFile();props.onChange();}}><XMarkIcon/></div> : ""}
     </div>;
 }
 

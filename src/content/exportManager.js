@@ -41,4 +41,17 @@ function getExportOption(i) {
     return options[i];
 }
 
-export {getOptionTitles, isEncrypted, getExportOption};
+function checkFileEncryptionType(file) {
+    for(var i = 0; i < options.length; i++) {
+        try {
+            if(options[i].check(file)) {
+                return i;
+            }
+        } catch (error) {
+            return -1;
+        }
+    }
+    return -1;
+}
+
+export {getOptionTitles, isEncrypted, getExportOption, checkFileEncryptionType};

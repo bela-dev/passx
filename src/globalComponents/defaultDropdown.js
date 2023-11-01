@@ -11,11 +11,13 @@ function DefaultDropdown(props) {
         props.onChange(activeItem);
     }
 
+    console.log(props.forceActive);
+
     const items = props.items;
 
-    return <div className={"default-dropdown" + (active ? " active" : "")} onClick={() => {setActive(!active);}}>
+    return <div className={"default-dropdown" + (active ? " active" : "")} onClick={() => {if(props.forceActive === -1) setActive(!active);}}>
         <div className="chevron"><ChevronIcon up/></div>
-        <h2>{items[activeItem]}</h2>
+        <h2>{items[props.forceActive !== -1 ? props.forceActive : activeItem]}</h2>
         <ul>
             {items.map((v, i) => {
                 return <li onClick={() => {setActiveItem(i);}}>{v}</li>;
