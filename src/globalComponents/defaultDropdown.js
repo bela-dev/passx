@@ -11,8 +11,6 @@ function DefaultDropdown(props) {
         props.onChange(activeItem);
     }
 
-    console.log(props.forceActive);
-
     const items = props.items;
 
     return <div className={"default-dropdown" + (active ? " active" : "")} onClick={() => {if(props.forceActive === -1) setActive(!active);}}>

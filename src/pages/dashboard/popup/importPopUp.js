@@ -26,7 +26,7 @@ function ImportPopUp(props) {
     const [defaultFormat, setDefaultFormat] = useState(-1);
 
     if(loading) {
-        return <ImportPopUpLoading fileContent={fileContent} activeFormat={activeFormat}/>;
+        return <ImportPopUpLoading fileContent={fileContent} activeFormat={defaultFormat !== -1 ? defaultFormat : activeFormat}/>;
     }
 
     return <PopUp 

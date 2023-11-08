@@ -19,11 +19,6 @@ function ExportPopUp(props) {
     const [expDescription, setExpDescription] = useState(true);
     const [expTitle, setExpTitle] = useState(true);
 
-    const [currentExportData, setCurrentExportData] = useState(-1);
-    if(currentExportData != -1) {
-        return <CSVDownload data={currentExportData} target="_blank" />;
-    }
-
     return <PopUp 
     className={"export"}
     title={"Export Data"}
@@ -36,7 +31,7 @@ function ExportPopUp(props) {
             getExportOption(activeFormat).export();
         }
     }}>
-        <DefaultDropdown items={getOptionTitles()} onChange={setActiveFormat}/>
+        <DefaultDropdown items={getOptionTitles()} onChange={setActiveFormat} forceActive={-1}/>
         
     </PopUp>;
 
